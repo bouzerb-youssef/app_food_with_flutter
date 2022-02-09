@@ -4,6 +4,11 @@
         android:label="flutter_food_delevery"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- google map Api -->
+ <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDlrpUSHOa-fRbs-Tj4JbvyeluEq6AaTYQ"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

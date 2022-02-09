@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delevery/config/theme.dart';
 import 'package:flutter_food_delevery/screens/home/home_screen.dart';
+import 'package:flutter_food_delevery/screens/location/location_screen.dart';
 
 import 'config/app_route.dart';
+import 'package:flutter/foundation.dart';
+
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
+/*     if (defaultTargetPlatform == TargetPlatform.android) {
+    AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
+  } */
   runApp(const MyApp());
 }
 

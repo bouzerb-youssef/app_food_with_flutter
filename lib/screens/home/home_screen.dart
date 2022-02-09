@@ -20,13 +20,19 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("home"),),
       body:Center(
-       child: SvgPicture.asset("assets/logo.svg"),/* ElevatedButton(
+       child: Column(
+         children: [
+           SvgPicture.asset("assets/logo.svg"),
+           ElevatedButton(
         style: ElevatedButton.styleFrom(primary: Theme.of(context).primaryColor),
         child: Text("location Screen"),
           onPressed: (){
-            Navigator.pushNamed(context, "/voucher");
+            Navigator.pushNamed(context, "/location");
 
-          },) */
+          },)
+
+         ],
+       ),/*  */
       ) ,
     );
   }
