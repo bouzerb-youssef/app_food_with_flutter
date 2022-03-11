@@ -1,56 +1,55 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delevery/screens/home/home_screen.dart';
 import 'package:flutter_food_delevery/screens/location/location_screen.dart';
 import 'package:flutter_food_delevery/screens/screens.dart';
 
-class AppRouter{
-  static Route onGenerateRoute(RouteSettings settings){
+class AppRouter {
+  static Route onGenerateRoute(RouteSettings settings) {
     print("the route is : ${settings.name}");
 
     switch (settings.name) {
       case "/":
-          return HomeScreen.route();
+        return HomeScreen.route();
 
       case HomeScreen.routeName:
-          return HomeScreen.route();
+        return HomeScreen.route();
 
       case LocationScreen.routeName:
-          return LocationScreen.route();
+        return LocationScreen.route();
       case BasketScreen.routeName:
-          return BasketScreen.route();  
+        return BasketScreen.route();
 
       case CheckoutScreen.routeName:
-          return CheckoutScreen.route();
+        return CheckoutScreen.route();
 
       case DeliveryTimeScreen.routeName:
-          return DeliveryTimeScreen.route(); 
+        return DeliveryTimeScreen.route();
 
       case FilterScreen.routeName:
-          return FilterScreen.route(); 
+        return FilterScreen.route();
 
       case RestaurantDetailsScreen.routeName:
-          return RestaurantDetailsScreen.route(); 
+        return RestaurantDetailsScreen.route();
 
       case RestaurantListingScreen.routeName:
-          return RestaurantListingScreen.route();  
+        return RestaurantListingScreen.route();
 
       case VoucherScreen.routeName:
-          return VoucherScreen.route();  
-          break;
+        return VoucherScreen.route();
+        break;
       default:
-          return _errorRoute();
-      
+        return _errorRoute();
     }
   }
 }
 
-  Route _errorRoute(){
-    return MaterialPageRoute(
-      builder: (_)=>Scaffold(
-        appBar: AppBar(title: Text("error"),),
+Route _errorRoute() {
+  return MaterialPageRoute(
+    builder: (_) => Scaffold(
+      appBar: AppBar(
+        title: Text("error"),
       ),
-      settings: RouteSettings(name: "/error"),
-      
-      );
-  }
+    ),
+    settings: RouteSettings(name: "/error"),
+  );
+}
