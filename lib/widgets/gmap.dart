@@ -14,9 +14,11 @@ class Gmap extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       width: double.infinity,
       child: GoogleMap(
+        zoomControlsEnabled: true,
         myLocationButtonEnabled: true,
+        myLocationEnabled: true,
         initialCameraPosition:
-            CameraPosition(target: LatLng(lat, lng), zoom: 5),
+            CameraPosition(target: LatLng(lat, lng), zoom: 10),
       ),
     );
   }

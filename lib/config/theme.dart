@@ -7,7 +7,7 @@ ThemeData theme() {
     accentColor: Color(0xFFe84545),
     backgroundColor: Color(0xFFFFFFFF),
     fontFamily: 'Futura',
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline1: TextStyle(
         color: Color(0xFF2b2e4a),
         fontWeight: FontWeight.bold,

@@ -5,13 +5,16 @@ import 'package:flutter_food_delevery/config/theme.dart';
 import 'package:flutter_food_delevery/repositories/geolocation/geolocation_repository.dart';
 import 'package:flutter_food_delevery/screens/home/home_screen.dart';
 
+import 'blocs/autocomplete/autocomplete_bloc.dart';
 import 'config/app_route.dart';
+import 'repositories/places/places_repository.dart';
 
 void main() {
-/*     if (defaultTargetPlatform == TargetPlatform.android) {
-    AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
-  } */
-  runApp(const MyApp());
+  BlocOverrides.runZoned(
+    () {
+      runApp(MyApp());
+    },
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +26,9 @@ class MyApp extends StatelessWidget {
     return MultiRepositoryProvider(
         providers: [
           RepositoryProvider<GeolocationRepository>(
-              create: (_) => GeolocationRepository())
+              create: (_) => GeolocationRepository()),
+          RepositoryProvider<PlacesRepository>(
+              create: (_) => PlacesRepository()),
         ],
         child: MultiBlocProvider(
           providers: [
@@ -32,10 +37,11 @@ class MyApp extends StatelessWidget {
                     geolocationRepository:
                         context.read<GeolocationRepository>())
                   ..add(LoadGeolocation())),
-            /* BlocProvider(
-              create: (context) => AutocompleteBloc(
-                  placesRepository: context.read<PlacesRepository>())
-                ..add(LoadAutocomplete())),
+            BlocProvider(
+                create: (context) => AutocompleteBloc(
+                    placesRepository: context.read<PlacesRepository>())
+                  ..add(
+                      LoadAutocomplete())), /*
           BlocProvider(
               create: (context) => PlaceBloc(
                   placesRepository: context.read<PlacesRepository>())),

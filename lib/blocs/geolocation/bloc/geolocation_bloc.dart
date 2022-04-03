@@ -15,10 +15,30 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
 
   GeolocationBloc({required GeolocationRepository geolocationRepository})
       : _geolocationRepository = geolocationRepository,
-        super(GeolocationLoading());
+        super(GeolocationLoading()) {
+    on<LoadGeolocation>(_onLoadGeolocation);
+    on<UpdateGeolocation>(_onUpdateGeolocation);
+  }
+  _onLoadGeolocation(
+      LoadGeolocation event, Emitter<GeolocationState> emit) async {
+    _geolocationSubscription?.cancel();
+
+    final Position position = await _geolocationRepository.getCurrentLocation();
+
+    add(UpdateGeolocation(position: position));
+  }
+
+  void _onUpdateGeolocation(
+      UpdateGeolocation event, Emitter<GeolocationState> emit) async {
+    emit(GeolocationLoaded(position: event.position));
+  }
 
   @override
-  Stream<GeolocationState> mapEventToState(
+  Future<void> close() {
+    _geolocationSubscription?.cancel();
+    return super.close();
+  }
+  /* Stream<GeolocationState> mapEventToState(
     GeolocationEvent event,
   ) async* {
     if (event is LoadGeolocation) {
@@ -40,9 +60,5 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
     yield GeolocationLoaded(position: event.position);
   }
 
-  @override
-  Future<void> close() {
-    _geolocationSubscription?.cancel();
-    return super.close();
-  }
+  */
 }
