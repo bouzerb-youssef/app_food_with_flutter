@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delevery/models/models.dart';
 import 'package:flutter_food_delevery/screens/home/home_screen.dart';
 import 'package:flutter_food_delevery/screens/location/location_screen.dart';
 import 'package:flutter_food_delevery/screens/screens.dart';
@@ -29,10 +30,12 @@ class AppRouter {
         return FilterScreen.route();
 
       case RestaurantDetailsScreen.routeName:
-        return RestaurantDetailsScreen.route();
+        return RestaurantDetailsScreen.route(
+            restaurant: settings.arguments as Restaurant);
 
       case RestaurantListingScreen.routeName:
-        return RestaurantListingScreen.route();
+        return RestaurantListingScreen.route(
+            restaurants: settings.arguments as List<Restaurant>);
 
       case VoucherScreen.routeName:
         return VoucherScreen.route();

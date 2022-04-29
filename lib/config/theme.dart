@@ -5,7 +5,7 @@ ThemeData theme() {
     primaryColor: Color(0xFFFE3C5B),
     scaffoldBackgroundColor: Color(0xFFF5F5F5),
     accentColor: Color(0xFFe84545),
-    backgroundColor: Color(0xFFFFFFFF),
+    backgroundColor: Color.fromARGB(228, 255, 255, 255),
     fontFamily: 'Futura',
     textTheme: const TextTheme(
       headline1: TextStyle(

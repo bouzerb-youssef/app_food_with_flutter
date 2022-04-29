@@ -4,15 +4,18 @@ import 'package:flutter_food_delevery/blocs/geolocation/bloc/geolocation_bloc.da
 import 'package:flutter_food_delevery/config/theme.dart';
 import 'package:flutter_food_delevery/repositories/geolocation/geolocation_repository.dart';
 import 'package:flutter_food_delevery/screens/home/home_screen.dart';
+import 'package:flutter_food_delevery/screens/location/location_screen.dart';
+import 'package:flutter_food_delevery/screens/restaurant_details/restaurant_details_screen.dart';
 
 import 'blocs/autocomplete/autocomplete_bloc.dart';
+import 'blocs/filters/filters_bloc.dart';
 import 'config/app_route.dart';
 import 'repositories/places/places_repository.dart';
 
 void main() {
   BlocOverrides.runZoned(
     () {
-      runApp(MyApp());
+      runApp(const MyApp());
     },
   );
 }
@@ -40,12 +43,12 @@ class MyApp extends StatelessWidget {
             BlocProvider(
                 create: (context) => AutocompleteBloc(
                     placesRepository: context.read<PlacesRepository>())
-                  ..add(
-                      LoadAutocomplete())), /*
-          BlocProvider(
+                  ..add(LoadAutocomplete())),
+            /*
+          BlocProvider(R
               create: (context) => PlaceBloc(
-                  placesRepository: context.read<PlacesRepository>())),
-          BlocProvider(create: (context) => FilterBloc()..add(FilterLoad())), */
+                  placesRepository: context.read<PlacesRepository>())),*/
+            BlocProvider(create: (context) => FiltersBloc()..add(FilterLoad())),
           ],
           child: MaterialApp(
             title: 'FoodDelivery',
@@ -53,6 +56,7 @@ class MyApp extends StatelessWidget {
             theme: theme(),
             onGenerateRoute: AppRouter.onGenerateRoute,
             initialRoute: HomeScreen.routeName,
+            /*  initialRoute: RestaurantDetailsScreen.routeName, */
           ),
         ));
   }

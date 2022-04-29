@@ -66,7 +66,7 @@ class LocationScreen extends StatelessWidget {
                             return Container(
                                 margin: const EdgeInsets.all(8),
                                 height: 300,
-                                color: state.autocomplete.isNotEmpty
+                                color: state.autocomplete.length > 0
                                     ? Colors.black.withOpacity(0.6)
                                     : Colors.transparent,
                                 child: ListView.builder(
